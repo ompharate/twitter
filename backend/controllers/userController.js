@@ -3,38 +3,39 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const Register = async (req, res) => {
-    try {
+    // try {
         const { name, username, email, password } = req.body;
-        // basic validation
-        if (!name || !username || !email || !password) {
-            return res.status(401).json({
-                message: "All fields are required.",
-                success: false
-            })
-        }
-        const user = await User.findOne({ email });
-        if (user) {
-            return res.status(401).json({
-                message: "User already exist.",
-                success: false
-            })
-        }
+    //     // basic validation
+    //     if (!name || !username || !email || !password) {
+    //         return res.status(401).json({
+    //             message: "All fields are required.",
+    //             success: false
+    //         })
+    //     }
+    //     const user = await User.findOne({ email });
+    //     if (user) {
+    //         return res.status(401).json({
+    //             message: "User already exist.",
+    //             success: false
+    //         })
+    //     }
         // const hashedPassword = await bcryptjs.hash(password, 16);
 
-        await User.create({
+        const user = await User.create({
             name,
             username,
             email,
-            password: 245
+            password
         });
-        return res.status(201).json({
-            message: "Account created successfully.",
-            success: true
-        })
+        res.send(user)
+    //     return res.status(201).json({
+    //         message: "Account created successfully.",
+    //         success: true
+    //     })
 
-    } catch (error) {
-        console.log(error);
-    }
+    // } catch (error) {
+    //     console.log(error);
+    // }
 }
 export const Login = async (req, res) => {
     try {
