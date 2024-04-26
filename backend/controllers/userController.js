@@ -66,7 +66,7 @@ export const Login = async (req, res) => {
     });
     return res
       .status(201)
-      .cookie("token", token, { expiresIn: "1d", httpOnly: true })
+      .cookie("token", token)
       .json({
         message: `Welcome back ${user.name}`,
         user,
