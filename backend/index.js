@@ -19,7 +19,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-    origin:"*",
+    origin:"https://twitter-pqs5.vercel.app",
     credentials:true
 }
 app.use(cors(corsOptions));
