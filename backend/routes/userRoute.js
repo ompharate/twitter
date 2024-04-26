@@ -4,6 +4,10 @@ import isAuthenticated from "../config/auth.js";
 
 const router = express.Router();
 
+
+router.route("/om").post((req,res)=>{
+    res.send("hello");
+});
 router.route("/register").post(Register);
 router.route("/login").post(Login);
 router.route("/logout").get(logout);

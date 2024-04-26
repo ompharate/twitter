@@ -24,9 +24,9 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-app.post("/om",(req,res)=>{
-    res.send(req.body)
-})
+// app.post("/om",(req,res)=>{
+//     res.send(req.body)
+// })
 
 // api
 app.use("/api/v1/user",userRoute);
