@@ -19,13 +19,13 @@ export const Register = async (req, res) => {
                 success: false
             })
         }
-        const hashedPassword = await bcryptjs.hash(password, 16);
+        // const hashedPassword = await bcryptjs.hash(password, 16);
 
         await User.create({
             name,
             username,
             email,
-            password: hashedPassword
+            password: 245
         });
         return res.status(201).json({
             message: "Account created successfully.",
