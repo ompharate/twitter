@@ -6,7 +6,7 @@ export const Register = async (req, res) => {
     // res.send(req.body)
     // try {
         const { name, username, email, password } = req.body;
-        
+        res.send(name)
     //     // basic validation
     //     if (!name || !username || !email || !password) {
     //         return res.status(401).json({
@@ -23,13 +23,13 @@ export const Register = async (req, res) => {
     //     }
     //     const hashedPassword = await bcryptjs.hash(password, 16);
 
-        const user = await User.create({
-            name,
-            username,
-            email,
-            password: hashedPassword
-        });
-        res.send(user)
+        // const user = await User.create({
+        //     name,
+        //     username,
+        //     email,
+        //     password: hashedPassword
+        // });
+        // res.send(user)
     //     return res.status(201).json({
     //         message: "Account created successfully.",
     //         success: true
