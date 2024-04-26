@@ -67,7 +67,7 @@ export const Login = async (req, res) => {
     console.log("token is : -",token)
     return res
       .status(201)
-      .cookie("token", token, { expiresIn: "1d", httpOnly: true, secure: true,sameSite: 'lax'})
+      .cookie("token", token, { expiresIn: "1d", httpOnly: true, secure: true,sameSite: 'none'})
       .json({
         message: `Welcome back ${user.name}`,
         user,
