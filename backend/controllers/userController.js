@@ -3,49 +3,38 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const Register = async (req, res) => {
-    // res.send(req.body)
-    // try {
+    try {
         const { name, username, email, password } = req.body;
-        // res.send(name+username+password+email)
-    //     // basic validation
-    //     if (!name || !username || !email || !password) {
-    //         return res.status(401).json({
-    //             message: "All fields are required.",
-    //             success: false
-    //         })
-    //     }
-    //     const user = await User.findOne({ email });
-    //     if (user) {
-    //         return res.status(401).json({
-    //             message: "User already exist.",
-    //             success: false
-    //         })
-    //     }
-    //     const hashedPassword = await bcryptjs.hash(password, 16);
+        // basic validation
+        if (!name || !username || !email || !password) {
+            return res.status(401).json({
+                message: "All fields are required.",
+                success: false
+            })
+        }
+        const user = await User.findOne({ email });
+        if (user) {
+            return res.status(401).json({
+                message: "User already exist.",
+                success: false
+            })
+        }
+        const hashedPassword = await bcryptjs.hash(password, 16);
 
-        const user = await User.create({
+        await User.create({
             name,
             username,
             email,
             password: hashedPassword
         });
-        if(user) {
+        return res.status(201).json({
+            message: "Account created successfully.",
+            success: true
+        })
 
-            res.send(user)
-        }else{
-
-            res.send("unbale to add")
-        }
-    //     return res.status(201).json({
-    //         message: "Account created successfully.",
-    //         success: true
-    //     })
-
-    // } catch (error) {
-    //     res.send(error)
-    //     console.log(error);
-    // }
-
+    } catch (error) {
+        console.log(error);
+    }
 }
 export const Login = async (req, res) => {
     try {
