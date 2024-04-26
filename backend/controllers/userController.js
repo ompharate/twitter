@@ -6,7 +6,7 @@ export const Register = async (req, res) => {
     // res.send(req.body)
     // try {
         const { name, username, email, password } = req.body;
-        res.send(name)
+        res.send(name+username+password+email)
     //     // basic validation
     //     if (!name || !username || !email || !password) {
     //         return res.status(401).json({
